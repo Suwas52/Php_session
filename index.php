@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+
 ?>
 
 <!doctype html>
@@ -11,11 +12,13 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body> 
-    <form action="<?php echo $_SERVER['PHP_SELF']?>" class="mb-3" method="POST">
-        <input type="text" name="email" class="form-control w-1=25 mt-1" id="email" placeholder="Enter Your Email">
-        <input type="password" name="password" class="form-control w-1=25 mt-1 " id="password" placeholder="Enter Your password">
-        <button type="submit" class="btn btn-primary m-3">Submit</button>
-    </form>
+    <div class="container mt-5">
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" class="mb-3 border p-5" method="POST">
+            <input type="text" name="email" class="form-control w-1=25 mt-1" id="email" placeholder="Enter Your Email"><br>
+            <input type="password" name="password" class="form-control w-1=25 mt-1 " id="password" placeholder="Enter Your password"><br>
+            <button type="submit" class="btn btn-primary m-3">Submit</button>
+        </form>
+    </div>
 
 
     <?php
@@ -24,8 +27,11 @@ session_start();
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            if($email== 'suwasdanuwar19@gmail.com' && $password == 'subash123'){
-                $_SESSION['user']= true;
+            $db_email = 'suwasdanuwar19@gmail.com';
+            $db_password = 'subash123';
+
+            if($email== $db_email && $password == $db_password){
+               setcookie("email",$email, time()+ 10, "/" );
                 header('location: welcome.php');       
             }
             else{

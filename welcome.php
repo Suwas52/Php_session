@@ -1,12 +1,11 @@
 <?php
 session_start();
-$islogged = isset($_SESSION['user']);
+$islogged = isset($_COOKIE['email']);
 
 if(!$islogged){
-    echo "Error";
+    header('location: index.php');
 }
 else{
-    echo "welcome";
-
+    echo 'welcome';
 }
 ?>
